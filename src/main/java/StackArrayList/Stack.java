@@ -9,8 +9,20 @@ import java.util.ArrayList;
 public class Stack<E> {
     private ArrayList elements;
 
-
     public Stack(){
-
+        elements = new ArrayList<E>();
     }
+
+    public void push(E e) {
+        elements.add(e);
+    }
+
+    public E pop() {
+        return (E) elements.remove(elements.size() - 1);
+    }
+
+    public boolean isEmpty() {
+        return elements.isEmpty();
+    }
+
 }
