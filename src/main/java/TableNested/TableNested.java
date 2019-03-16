@@ -15,23 +15,22 @@ public class TableNested<K, V> {
     }
 
 
-    public class Entry<K, V> {
-        private K key;
-        private V value;
+    public class Entry<Key, Value> {
+        private Key key;
+        private Value value;
 
-        public Entry(K key, V value) {
+        public Entry(Key key, Value value) {
             this.key = key;
             this.value = value;
         }
 
-        public K getKey() {
+        public Key getKey() {
             return key;
         }
 
-        public V getValue() {
+        public Value getValue() {
             return value;
         }
-
     }
 
 
@@ -47,15 +46,19 @@ public class TableNested<K, V> {
     }
 
     public void put(K key, V value) {
-        if(get(key) == null) {
-            entries.add(new Entry<K, V>(key, value));
+        for (int i = 0; i < entries.size(); i++) {
+
+            if (key == entries.get(i).getKey()) {
+                remove(key);
+            }
         }
-    }
+            entries.add(this.new Entry<>(key, value));
+        }
 
     public void remove(K key){
         int keyIndex = -1;
         for (int i = 0; i < entries.size(); i++) {
-            if(key == entries.get(i)){
+            if(key == entries.get(i).getKey()){
                 keyIndex = i;
             }
         }

@@ -18,12 +18,14 @@ public class ObjectStack<E> {
 
     public void push(E e) {
         elements = Arrays.copyOf(elements, numberOfElements + 1);
+        numberOfElements++;
         elements[numberOfElements - 1] = e;
     }
 
     public Object pop() {
         Object lastElement = elements[numberOfElements - 1];
         elements = Arrays.copyOf(elements, numberOfElements - 1);
+        numberOfElements--;
         return lastElement;
     }
 

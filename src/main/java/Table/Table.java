@@ -23,20 +23,24 @@ public class Table<K, V> {
                 return entry.getValue();
             }
         }
-
         return null;
     }
 
     public void put(K key, V value) {
-        if(get(key) == null) {
-            entries.add(new Entry<K, V>(key, value));
+
+        for (int i = 0; i < entries.size(); i++) {
+            if (key == entries.get(i).getKey()) {
+                remove(key);
+            }
         }
+            entries.add(new Entry<K, V>(key, value));
+
     }
 
     public void remove(K key){
         int keyIndex = -1;
         for (int i = 0; i < entries.size(); i++) {
-            if(key == entries.get(i)){
+            if(key == entries.get(i).getKey()){
                 keyIndex = i;
             }
         }

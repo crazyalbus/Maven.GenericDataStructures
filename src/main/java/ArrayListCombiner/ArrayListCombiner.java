@@ -10,7 +10,17 @@ import java.util.ArrayList;
  */
 public class ArrayListCombiner {
 
+public static <T> void extendCombiner(ArrayList<T> list1, ArrayList<? extends T> list2){
 
+    list1.addAll(list2);
+
+}
+
+public static <T> void superCombiner(ArrayList<? super T> list1, ArrayList<T> list2){
+
+    list1.addAll(list2);
+
+}
 
 
 }
